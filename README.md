@@ -2,4 +2,5 @@
 
 ## Caso de Prueba 1
 
-![casodeprueba1](./caso%20de%20prueba%201.png)
+![casodeprueba1body](./caso%20de%20prueba%201%20-%20body.png)
+
