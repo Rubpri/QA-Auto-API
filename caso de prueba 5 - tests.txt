@@ -1,0 +1,40 @@
+pm.test("Status 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Content-Type JSON", function () {
+    pm.response.to.have.header("Content-Type", "application/json");
+});
+
+pm.test("Contiene todos los elementos", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData).to.have.property("id");
+    pm.expect(jsonData).to.have.property("username");
+    pm.expect(jsonData).to.have.property("firstName");
+    pm.expect(jsonData).to.have.property("lastName");
+    pm.expect(jsonData).to.have.property("email");
+    pm.expect(jsonData).to.have.property("password");
+    pm.expect(jsonData).to.have.property("phone");
+    pm.expect(jsonData).to.have.property("userStatus");
+});
+
+pm.test("El id es un número", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.id).to.be.a('number');
+});
+
+pm.test("El userStatus es 1 o 0", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.userStatus).to.be.oneOf([0, 1]);
+});
+
+pm.test("Todos los elementos menos id y status son string", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.username).to.be.a('string');
+    pm.expect(jsonData.firstName).to.be.a('string');
+    pm.expect(jsonData.lastName).to.be.a('string');
+    pm.expect(jsonData.email).to.be.a('string');
+    pm.expect(jsonData.password).to.be.a('string');
+    pm.expect(jsonData.phone).to.be.a('string');
+});
+
